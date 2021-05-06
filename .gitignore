@@ -31,6 +31,8 @@
 *.out
 *.app
 
-# CMake Files
+# CMake & Project Files
 bin/*
 build/*
+data.db
+data/*

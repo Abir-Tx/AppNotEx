@@ -12,14 +12,19 @@ message("AppNotEx Build System By Abir-Tx")
 message("--------------------------------")
 
 # Compiler Flags
-set(CMAKE_CXX_FLAGS "-Wall -v -g -Werror -Wextra -Wfatal-errors")
+set(CMAKE_CXX_FLAGS "-Wall -v -g -Wextra -Wfatal-errors -lsqlite3")
+# Can Be used: -Werror
 
 # Place the executable in the bin directory
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
 # Build
+            # Libraries
+set(ALIB_LIB "lib/ALib/include/alib")
+set(RANG_LIB "lib/ALib/lib/rang")
+
 file(GLOB_RECURSE SOURCES "src/*.cpp")
-include_directories(include/AppNotEx)
+include_directories(include/AppNotEx/database ${ALIB_LIB} ${RANG_LIB})
 add_executable(appnotex appnotex.cpp ${SOURCES})
 
 
