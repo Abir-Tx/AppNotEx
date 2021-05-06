@@ -1,3 +1,4 @@
 [submodule "lib/ALib"]
 	path = lib/ALib
-	url = git@github.com:Abir-Tx/ALib.git
+	url = https://github.com/Abir-Tx/ALib.git
+
