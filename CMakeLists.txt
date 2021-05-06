@@ -24,7 +24,7 @@ set(ALIB_LIB "lib/ALib/include/alib")
 set(RANG_LIB "lib/ALib/lib/rang")
 
 file(GLOB_RECURSE SOURCES "src/*.cpp")
-include_directories(include/AppNotEx/database ${ALIB_LIB} ${RANG_LIB})
+include_directories(include/AppNotEx/database include/AppNotEx ${ALIB_LIB} ${RANG_LIB})
 add_executable(appnotex appnotex.cpp ${SOURCES})
 
 
