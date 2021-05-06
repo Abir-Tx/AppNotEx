@@ -1,0 +1,15 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:AppNotEx}/data/data.db",
+            "name": "AppNotExData"
+        }
+    ],
+    "sqltools.useNodeRuntime": true,
+    // cpp settings
+    "C_Cpp.autocomplete": "Default",
+    "C_Cpp.clang_format_style": "file",
+    "C_Cpp.codeFolding": "Enabled"
+}
