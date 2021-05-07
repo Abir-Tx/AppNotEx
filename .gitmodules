@@ -2,3 +2,6 @@
 	path = lib/ALib
 	url = https://github.com/Abir-Tx/ALib.git
 
+[submodule "lib/spdlog"]
+	path = lib/spdlog
+	url = https://github.com/gabime/spdlog
