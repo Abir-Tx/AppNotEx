@@ -4,6 +4,8 @@
 
 #include <iostream>
 
+#include "spdlog/sinks/basic_file_sink.h"
+
 // Macro for connecting to given database
 #define CONNECT(dbname) \
   sqlite3 *datadb;      \
@@ -13,11 +15,16 @@ void Database::createDb(const char *dbname) {
   // Creating the database file
   CONNECT(dbname);
 
+  // Creating the logging object
+  auto logger = spdlog::basic_logger_mt("appnotex", "../data/appnotexlog");
+
   //    checking for errors
   if (status == SQLITE_OK)
-    std::cout << "Database Created Successfully" << std::endl;
-  else
-    std::cerr << "Error: " << sqlite3_errmsg(datadb);
+    logger->info("Database Created Successfully");
+  else {
+    std::string errorMessage = sqlite3_errmsg(datadb);
+    logger->info("Error: " + errorMessage);
+  }
 
   // Closing the database
   sqlite3_close(datadb);
