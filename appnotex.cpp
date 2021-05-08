@@ -2,6 +2,7 @@
 
 #include "alib.hpp"
 #include "database.hpp"
+#include "export/export.hpp"
 
 int main(int argc, char const *argv[]) {
   // Displaying the title of the AppNotEx using Alib decorators
