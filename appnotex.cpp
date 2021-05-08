@@ -30,13 +30,13 @@ int main(int argc, char const *argv[]) {
     db->createTable(dbfilename, tbname);
 
     std::string appnameData, distroname, link, note;
-    std::cout << "Enter the app name data: ";
+    std::cout << "App Name: ";
     std::cin >> appnameData;
-    std::cout << "Enter the distroname: ";
+    std::cout << "Distro Name: ";
     std::cin >> distroname;
-    std::cout << "Enter the link of the app: ";
+    std::cout << "App Link: ";
     std::cin >> link;
-    std::cout << "Enter additional notes: ";
+    std::cout << "Extra Notes: ";
     std::cin >> note;
     bool queryStatus =
         db->insertData(dbfilename, tbname, appnameData.c_str(),
