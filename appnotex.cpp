@@ -14,7 +14,7 @@ int main(int argc, char const *argv[]) {
 
     if (std::strcmp(argv[1], availableCmdArgs[0]) == 0 ||
         strcmp(argv[1], availableCmdArgs[1]) == 0) {
-      std::cout << "Working on it....";
+      std::cout << "\n[This feature will be soon available]";
     } else {
       std::cout << "Invalid arguments passed. available commands are";
       std::cout << std::endl;
