@@ -15,9 +15,10 @@ void Database::createDb(COCHAR dbname) {
   int status = sqlite3_open(dbname, &datadb);
 
   //    checking for errors
-  if (status == SQLITE_OK)
+  if (status == SQLITE_OK) {
+    logger->info("------------ New Session ----------");
     logger->info("Connected to Database Successfully");
-  else {
+  } else {
     std::string errorMessage = sqlite3_errmsg(datadb);
     logger->info("Error: " + errorMessage);
   }
