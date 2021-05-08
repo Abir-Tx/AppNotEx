@@ -14,7 +14,7 @@ message("--------------------------------")
 
 
 # Compiler Flags
-set(CMAKE_CXX_FLAGS "-Wall -v -g -Wextra -Wfatal-errors -lsqlite3")
+set(CMAKE_CXX_FLAGS "-Wall -v -g -Wextra -Wfatal-errors -lm -lsqlite3")
 # Can Be used: -Werror
 
 # Place the executable in the bin directory
