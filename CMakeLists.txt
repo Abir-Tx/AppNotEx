@@ -34,24 +34,27 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 # Build
+            # Sources and Headers of AppNotEx
+file(GLOB_RECURSE SOURCES "src/*.cpp")
+file(GLOB_RECURSE HEADERS "include/AppNotEx/*.hpp")
             # Libraries
 set(ALIB_LIB "lib/ALib/include/alib")
 set(RANG_LIB "lib/ALib/lib/rang")
 set(SPDLOG_LIB "lib/spdlog/include")
+                          # My Own AppNotexLib
+add_library(appnotexd STATIC
+  ${HEADERS}
+  ${SOURCES}
+)
 
 # priduction build
-file(GLOB_RECURSE SOURCES "src/*.cpp")
 include_directories(include/AppNotEx/database include/AppNotEx ${ALIB_LIB} ${RANG_LIB} ${SPDLOG_LIB})
 add_executable(appnotex appnotex.cpp ${SOURCES})
 
-# testing build
+# Testing build
 enable_testing()
-add_library(testlib STATIC
-  include/AppNotEx/database/database.hpp
-  ${SOURCES}
-)
 add_executable(appnotexTest test/appnotexTest.cpp)
-target_link_libraries(appnotexTest testlib gtest_main)
+target_link_libraries(appnotexTest appnotexd gtest_main)
 # Add CTests
 add_test(NAME appnotex_Test COMMAND appnotexTest)
 
