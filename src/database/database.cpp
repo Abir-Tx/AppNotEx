@@ -4,6 +4,7 @@
 
 #include <iostream>
 
+#include "rang.hpp"
 #include "spdlog/sinks/basic_file_sink.h"
 
 // Creating the logging object
@@ -59,4 +60,27 @@ bool Database::insertData(COCHAR dbname, COCHAR tbname, COCHAR appname,
     logger->critical("Data insertion failed unexpectedly");
     return false;
   }
+}
+
+// Funcstion for printing Data from Database
+int Database::callback(void *data, int argc, char **argv, char **azColName) {
+  for (int i = 0; i < argc; i++) {
+    // printing coloumn name and value
+    std::cout << rang::style::bold << azColName[i] << ": " << rang::style::reset
+              << argv[i] << std::endl;
+  }
+  std::cout << std::endl;
+  return 0;
+}
+
+void Database::printData(COCHAR dbname, COCHAR tbname) {
+  CONNECT(dbname);
+
+  std::string tablename = tbname;
+  std::string selectQuery =
+      "SELECT appname AS 'App Name', distroname AS 'Distro Name', link AS 'App "
+      "Link', note AS 'Extra Notes' FROM " +
+      tablename + ";";
+
+  sqlite3_exec(datadb, selectQuery.c_str(), callback, NULL, NULL);
 }

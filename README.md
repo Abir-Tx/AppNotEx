@@ -7,11 +7,9 @@ Linux personal apps/packages quick terminal based note keeper which can be expor
 Issue these commands step by step to build the **AppNotEx** binary. 
 
 ```bash
-git clone https://github.com/Abir-Tx/AppNotEx.git
-cd AppNotEx
-git submodule init
-git submodule update
-make buildir && make
+git clone https://github.com/Abir-Tx/AppNotEx.git && cd AppNotEx
+git submodule init && git submodule update
+make builddir && make
 ```
 
 You will find the binary in the **bin** folder after the compilation
