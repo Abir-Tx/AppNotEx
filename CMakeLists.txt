@@ -47,7 +47,7 @@ add_library(appnotexd STATIC
   ${SOURCES}
 )
 
-# priduction build
+# Production build
 include_directories(include/AppNotEx/database include/AppNotEx ${ALIB_LIB} ${RANG_LIB} ${SPDLOG_LIB})
 add_executable(appnotex appnotex.cpp ${SOURCES})
 
@@ -55,12 +55,9 @@ add_executable(appnotex appnotex.cpp ${SOURCES})
 enable_testing()
 add_executable(appnotexTest test/appnotexTest.cpp)
 target_link_libraries(appnotexTest appnotexd gtest_main)
-# Add CTests
+# Add CMAKE CTests
 add_test(NAME appnotex_Test COMMAND appnotexTest)
 
+# Build done message
 message("Done Building AppNotEx")
 message("----------------------")
-
-
-
-

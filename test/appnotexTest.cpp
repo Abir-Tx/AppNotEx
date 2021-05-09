@@ -4,13 +4,15 @@
 
 TEST(appnotexTest, insertQueryTest) {
   // Creating database& Table
-  const char *dbfilename = "../data/data.db";
-  const char *tbname = "Data";
+  const char *dbfilename = "../data/test/data.db";
+  const char *tbname = "DataTest";
   Database *db = new Database();
 
-  bool status;
-  status =
-      db->insertData(dbfilename, tbname, "Gogle", "Test", "testme", "testme");
+  db->createDb(dbfilename);
+  db->createTable(dbfilename, tbname);
+
+  bool status = db->insertData(dbfilename, tbname, "mutt", "Arch",
+                               "www.mutt.org", "Emailclient-terminal-based");
 
   EXPECT_TRUE(status);
 }
