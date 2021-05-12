@@ -2,7 +2,7 @@
 
 #include "database.hpp"
 
-TEST(appnotexTest, insertQueryTest) {
+TEST(DatabaseTest, insertQueryTest) {
   // Creating database& Table
   const char *dbfilename = "../data/test/data.db";
   const char *tbname = "DataTest";
