@@ -62,7 +62,7 @@ bool Database::insertData(COCHAR dbname, COCHAR tbname, COCHAR appname,
   }
 }
 
-// Funcstion for printing Data from Database
+// Function for printing Data from Database
 int Database::callback(void *data, int argc, char **argv, char **azColName) {
   for (int i = 0; i < argc; i++) {
     // printing coloumn name and value
