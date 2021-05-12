@@ -21,3 +21,6 @@ uninstall:
 	# rm -r ~/.local/bin/AppNotEx -r
 	# rm ~/.local/bin/appnotex
 	# rm ~/.local/bin/data -r
+
+runtest:
+	cd build && cmake .. && make appnotexTest && echo build done test build && echo "" && echo "" && ./../bin/appnotexTest
