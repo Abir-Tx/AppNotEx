@@ -82,5 +82,12 @@ void Database::printData(COCHAR dbname, COCHAR tbname) {
       "Link', note AS 'Extra Notes' FROM " +
       tablename + ";";
 
-  sqlite3_exec(datadb, selectQuery.c_str(), callback, NULL, NULL);
+  int status = sqlite3_exec(datadb, selectQuery.c_str(), callback, NULL, NULL);
+
+  if (status == SQLITE_OK)
+    logger->info("Print data successfull");
+  else
+    logger->error("Could not read database & fetch data");
+
+  sqlite3_close(datadb);
 }

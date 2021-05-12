@@ -21,19 +21,43 @@ set(CMAKE_CXX_FLAGS "-Wall -v -g -Wextra -Wfatal-errors -lm -lsqlite3")
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
 
+# Unit Testing using google test
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  # Specify the commit you depend on and update it regularly.
+  URL https://github.com/google/googletest/archive/f5e592d8ee5ffb1d9af5be7f715ce3576b8bf9c4.zip
+)
+
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
 # Build
+            # Sources and Headers of AppNotEx
+file(GLOB_RECURSE SOURCES "src/*.cpp")
+file(GLOB_RECURSE HEADERS "include/AppNotEx/*.hpp")
             # Libraries
 set(ALIB_LIB "lib/ALib/include/alib")
 set(RANG_LIB "lib/ALib/lib/rang")
 set(SPDLOG_LIB "lib/spdlog/include")
+                          # My Own AppNotexLib
+add_library(appnotexd STATIC
+  ${HEADERS}
+  ${SOURCES}
+)
 
-file(GLOB_RECURSE SOURCES "src/*.cpp")
+# Production build
 include_directories(include/AppNotEx/database include/AppNotEx ${ALIB_LIB} ${RANG_LIB} ${SPDLOG_LIB})
 add_executable(appnotex appnotex.cpp ${SOURCES})
 
+# Testing build
+enable_testing()
+add_executable(appnotexTest test/appnotexTest.cpp)
+target_link_libraries(appnotexTest appnotexd gtest_main)
+# Add CMAKE CTests
+add_test(NAME appnotex_Test COMMAND appnotexTest)
+
+# Build done message
 message("Done Building AppNotEx")
 message("----------------------")
-
-
-
-

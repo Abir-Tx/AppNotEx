@@ -1,7 +1,7 @@
 all: run
 
 run:
-	cd build && cmake .. && make && echo build done && echo "" && echo "" && ./../bin/appnotex
+	cd build && cmake .. && make appnotex && echo build done && echo "" && echo "" && ./../bin/appnotex
 
 builddir:
 	mkdir build bin data
@@ -21,3 +21,6 @@ uninstall:
 	# rm -r ~/.local/bin/AppNotEx -r
 	# rm ~/.local/bin/appnotex
 	# rm ~/.local/bin/data -r
+
+runtest:
+	cd build && cmake .. && make appnotexTest && echo build done test build && echo "" && echo "" && ./../bin/appnotexTest
