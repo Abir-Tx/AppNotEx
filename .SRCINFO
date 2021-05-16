@@ -1,4 +1,4 @@
-pkgbase = AppNotEx
+pkgbase = appnotex
 	pkgdesc = Quick terminal based note keeper for Linux Apps
 	pkgver = 0.9.0
 	pkgrel = 1
@@ -14,5 +14,5 @@ pkgbase = AppNotEx
 	source = git+https://github.com/Abir-Tx/AppNotEx.git
 	md5sums = SKIP
 
-pkgname = AppNotEx
+pkgname = appnotex
 

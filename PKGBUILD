@@ -1,6 +1,6 @@
 
 # Maintainer: Abir-Tx <abirtx@yandex.com>
-pkgname=AppNotEx
+pkgname=appnotex
 pkgver=0.9.0
 pkgrel=1
 pkgdesc="Quick terminal based note keeper for Linux Apps"
@@ -23,7 +23,7 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 build() {
-	cd "$pkgname"
+	cd AppNotEx
 	git submodule init && git submodule update
 	make builddir
 	cd build
@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-	cd "$pkgname"
+	cd AppNotEx
 	cd build
 	sudo make install
 
