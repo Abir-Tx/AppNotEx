@@ -1,6 +1,8 @@
 #include "database.hpp"
 
+#include <pwd.h>
 #include <sqlite3.h>
+#include <sys/types.h>
 
 #include <iostream>
 
@@ -8,7 +10,14 @@
 #include "spdlog/sinks/basic_file_sink.h"
 
 // Creating the logging object
-auto logger = spdlog::basic_logger_mt("appnotex", "../data/appnotexlog");
+
+const char *homedir;
+
+if ((homedir = getenv("HOME")) == NULL) {
+  homedir = getpwuid(getuid())->pw_dir;
+}
+std::string logdir = homedir + ".local/share/appnotexlog";
+auto logger = spdlog::basic_logger_mt("appnotex", logdir);
 
 void Database::createDb(COCHAR dbname) {
   // Creating the database file

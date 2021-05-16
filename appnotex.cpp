@@ -9,7 +9,7 @@ int main(int argc, char const *argv[]) {
   alib::decorateMe("AppNotEx", 1, "", true);
 
   // Creating database & Table
-  const char *dbfilename = "../data/data.db";
+  const char *dbfilename = "/usr/share/data.db";
   const char *tbname = "Data";
   Database *db = new Database();
 
