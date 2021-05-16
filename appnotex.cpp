@@ -1,4 +1,8 @@
+#include <pwd.h>
+#include <sys/types.h>
+
 #include <iostream>
+#include <string>
 
 #include "alib.hpp"
 #include "database.hpp"
@@ -9,7 +13,12 @@ int main(int argc, char const *argv[]) {
   alib::decorateMe("AppNotEx", 1, "", true);
 
   // Creating database & Table
-  const char *dbfilename = "/usr/share/data.db";
+  struct passwd *pw = getpwuid(getuid());
+
+  const char *homedir = pw->pw_dir;
+  std::string home = homedir;
+  std::string dbfile = home + "/.local/share/data.db";
+  const char *dbfilename = dbfile.c_str();
   const char *tbname = "Data";
   Database *db = new Database();
 

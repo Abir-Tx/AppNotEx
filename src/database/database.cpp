@@ -15,7 +15,7 @@ struct passwd *pw = getpwuid(getuid());
 
 const char *homedir = pw->pw_dir;
 std::string home = homedir;
-std::string logdir = home + ".local/share/appnotexlog";
+std::string logdir = home + "/.local/share/appnotexlog";
 
 auto logger = spdlog::basic_logger_mt("appnotex", logdir);
 
