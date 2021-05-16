@@ -35,4 +35,8 @@ package() {
 	cd "$pkgname"
 	cd build
 	sudo make install
+
+	cd ..
+	install -Dm644 -v README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 -v LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
