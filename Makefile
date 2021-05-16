@@ -24,3 +24,7 @@ uninstall:
 
 runtest:
 	cd build && cmake .. && make appnotexTest && echo build done test build && echo "" && echo "" && ./../bin/appnotexTest
+
+# PKGBUILD
+cleanpkg:
+	sudo rm -r AppNotEx pkg src/AppNotEx *zst

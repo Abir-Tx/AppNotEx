@@ -36,3 +36,9 @@ bin/*
 build/*
 data.db
 data/*
+
+# Arch PKGBUILD
+pkg/*
+AppNotEx/*
+*.zst
+src/AppNotEx/*
