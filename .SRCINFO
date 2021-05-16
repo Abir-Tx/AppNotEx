@@ -8,6 +8,7 @@ pkgbase = appnotex
 	makedepends = git
 	makedepends = make
 	makedepends = cmake
+	makedepends = gzip
 	depends = sqlite3
 	provides = appnotex
 	conflicts = appnotex
