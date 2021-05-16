@@ -11,12 +11,12 @@
 
 // Creating the logging object
 
-const char *homedir;
+struct passwd *pw = getpwuid(getuid());
 
-if ((homedir = getenv("HOME")) == NULL) {
-  homedir = getpwuid(getuid())->pw_dir;
-}
-std::string logdir = homedir + ".local/share/appnotexlog";
+const char *homedir = pw->pw_dir;
+std::string home = homedir;
+std::string logdir = home + ".local/share/appnotexlog";
+
 auto logger = spdlog::basic_logger_mt("appnotex", logdir);
 
 void Database::createDb(COCHAR dbname) {
