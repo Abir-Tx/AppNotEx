@@ -1,6 +1,14 @@
 # AppNotEx
 Linux personal apps/packages quick terminal based note keeper which can be exported later.
 
+## Install
+
+### Arch Linux
+
+```bash
+yay -S appnotex
+```
+
 
 ## Build Process
 
