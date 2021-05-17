@@ -39,9 +39,9 @@ TEST(DatabaeTest, fullLineTextTest) {
 
 TEST(DatabaseTest, createDbTest) {
   const char *dbfilename = "../data/test/data.db";
-  const char *tbname = "DataTest";
   Database *db = new Database();
 
+  db->createDb(dbfilename);
   std::ifstream dbfile("../data/test/data.db");
   bool ok = false;
   if (!dbfile.is_open())
