@@ -70,13 +70,13 @@ int main(int argc, char const *argv[]) {
 
     std::string appnameData, distroname, link, note;
     std::cout << "App Name: ";
-    std::cin >> appnameData;
+    getline(std::cin, appnameData);
     std::cout << "Distro Name: ";
-    std::cin >> distroname;
+    getline(std::cin, distroname);
     std::cout << "App Link: ";
-    std::cin >> link;
+    getline(std::cin, link);
     std::cout << "Extra Notes: ";
-    std::cin >> note;
+    getline(std::cin, note);
     bool queryStatus =
         db->insertData(dbfilename, tbname, appnameData.c_str(),
                        distroname.c_str(), link.c_str(), note.c_str());
