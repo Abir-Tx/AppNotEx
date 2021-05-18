@@ -21,7 +21,7 @@ TEST(DatabaseTest, insertQueryTest) {
   EXPECT_TRUE(status);
 }
 
-TEST(DatabaeTest, fullLineTextTest) {
+TEST(DatabaseTest, fullLineTextTest) {
   // Creating database& Table
   const char *dbfilename = "../data/test/data.db";
   const char *tbname = "DataTest";
@@ -50,4 +50,20 @@ TEST(DatabaseTest, createDbTest) {
     ok = true;
 
   EXPECT_TRUE(ok);
+}
+
+// Notex Tests
+TEST(notexTest, insertQuerytest) {
+  // Creating database& Table
+  const char *dbfilename = "../data/test/data.db";
+  const char *tbname = "generalTest";
+  Database *db = new Database();
+
+  db->createDb(dbfilename);
+  db->createNotexTable(dbfilename, tbname);
+
+  bool status = db->insertNotexData(dbfilename, tbname, "Hey Bro !");
+
+  delete db;
+  EXPECT_TRUE(status);
 }

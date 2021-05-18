@@ -48,9 +48,11 @@ add_library(appnotexd STATIC
 )
 
 # Production build
-include_directories(include/AppNotEx/database include/AppNotEx ${ALIB_LIB} ${RANG_LIB} ${SPDLOG_LIB})
+# -------------------------------------appnotex----------------------------------------
+include_directories(include/AppNotEx/database include/AppNotEx/notex include/AppNotEx ${ALIB_LIB} ${RANG_LIB} ${SPDLOG_LIB})
 add_executable(appnotex appnotex.cpp ${SOURCES})
-
+# ---------------------------------------notex------------------------------------------
+add_executable(notex notex.cpp ${SOURCES})
 # Install
 install(TARGETS appnotex DESTINATION bin)
 
