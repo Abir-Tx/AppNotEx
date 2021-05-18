@@ -21,7 +21,8 @@ execute_process(COMMAND ${LSB_RELEASE_EXEC} -is
 # Compiler Flags
 if(LSB_RELEASE_ID_SHORT STREQUAL "Ubuntu")
   message("You are on Ubuntu !")
-  set(CMAKE_CXX_FLAGS "-Wall -v -g -Wextra -Wfatal-errors -lm -L/usr/lib/x86_64-Linux-gnu/ -lsqlite3")
+  message("")
+  set(CMAKE_CXX_FLAGS "-Wall -v -g -Wextra -Wfatal-errors -lm -L/usr/lib/x86_64-linux-gnu/ -lsqlite3")
 else()
   set(CMAKE_CXX_FLAGS "-Wall -v -g -Wextra -Wfatal-errors -lm -L/usr/lib -lsqlite3")
 endif()
