@@ -1,6 +1,6 @@
 #include "notex.hpp"
 
-int main() {
+int main(int argc, char const *argv[]) {
   alib::clrscr();
   alib::decorateMe("Notex", 1, "", true);
 
@@ -9,7 +9,7 @@ int main() {
 
   const char *homedir = pw->pw_dir;
   std::string home = homedir;
-  std::string dbfile = home + "/.local/share/notex.db";
+  std::string dbfile = home + "/.local/share/data.db";
   const char *dbfilename = dbfile.c_str();
   const char *tbname = "general";
   Database *db = new Database();

@@ -130,3 +130,20 @@ bool Database::insertNotexData(COCHAR dbname, COCHAR tbname, COCHAR note) {
     return false;
   }
 }
+
+void Database::printNotexData(COCHAR dbname, COCHAR tbname) {
+  CONNECT(dbname);
+
+  std::string tablename = tbname;
+  std::string selectQuery =
+      "SELECT notes As 'Quick Notes' FROM " + tablename + ";";
+
+  int status = sqlite3_exec(datadb, selectQuery.c_str(), callback, NULL, NULL);
+
+  if (status == SQLITE_OK)
+    logger->info("Print data successfull");
+  else
+    logger->error("Could not read database & fetch data");
+
+  sqlite3_close(datadb);
+}

@@ -37,6 +37,8 @@ int main(int argc, char const *argv[]) {
                    0) { /* --print || -p */
 
       db->printData(dbfilename, tbname);
+      alib::decorateMe("Notex", 1, "", true);
+      db->printNotexData(dbfilename, "general");
 
     } else if (std::strcmp(argv[1], availableCmdArgs[6]) == 0 ||
                std::strcmp(argv[1], availableCmdArgs[7]) ==
