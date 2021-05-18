@@ -11,5 +11,6 @@
     // cpp settings
     "C_Cpp.autocomplete": "Default",
     "C_Cpp.clang_format_style": "file",
-    "C_Cpp.codeFolding": "Enabled"
+    "C_Cpp.codeFolding": "Enabled",
+    "editor.formatOnSave": false
 }
