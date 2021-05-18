@@ -14,7 +14,7 @@ message("--------------------------------")
 
 
 # Compiler Flags
-set(CMAKE_CXX_FLAGS "-Wall -v -g -Wextra -Wfatal-errors -lm -lsqlite3")
+set(CMAKE_CXX_FLAGS "-Wall -v -g -Wextra -Wfatal-errors -lm -L/usr/lib -lsqlite3")
 # Can Be used: -Werror
 
 # Place the executable in the bin directory
@@ -66,3 +66,10 @@ add_test(NAME appnotex_Test COMMAND appnotexTest)
 # Build done message
 message("Done Building AppNotEx")
 message("----------------------")
+find_program(LSB_RELEASE_EXEC lsb_release)
+execute_process(COMMAND ${LSB_RELEASE_EXEC} -is
+    OUTPUT_VARIABLE LSB_RELEASE_ID_SHORT
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+message("${LSB_RELEASE_ID_SHORT}")
