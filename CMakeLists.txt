@@ -22,9 +22,9 @@ execute_process(COMMAND ${LSB_RELEASE_EXEC} -is
 if(LSB_RELEASE_ID_SHORT STREQUAL "Ubuntu")
   message("You are on Ubuntu !")
   message("")
-  set(CMAKE_CXX_FLAGS "-Wall -v -g -Wextra -Wfatal-errors -lm -L/usr/lib/x86_64-linux-gnu/ -lsqlite3")
+  set(CMAKE_CXX_FLAGS "-lm -lsqlite3")
 else()
-  set(CMAKE_CXX_FLAGS "-Wall -v -g -Wextra -Wfatal-errors -lm -L/usr/lib -lsqlite3")
+  set(CMAKE_CXX_FLAGS "-lm -lsqlite3")
 endif()
 
 
@@ -62,8 +62,15 @@ add_library(appnotexd STATIC
 
 # Production build
 # -------------------------------------appnotex----------------------------------------
-include_directories(include/AppNotEx/database include/AppNotEx/notex include/AppNotEx ${ALIB_LIB} ${RANG_LIB} ${SPDLOG_LIB})
-add_executable(appnotex appnotex.cpp ${SOURCES})
+
+find_package (SQLite3)
+if (SQLITE3_FOUND)
+  message("FOUND SQLITE3")
+  include_directories(include/AppNotEx/database include/AppNotEx/notex include/AppNotEx ${ALIB_LIB} ${RANG_LIB} ${SPDLOG_LIB})
+  include_directories(${SQLITE3_INCLUDE_DIRS})
+  add_executable(appnotex appnotex.cpp ${SOURCES})
+  target_link_libraries (appnotex ${SQLITE3_LIBRARIES})
+endif (SQLITE3_FOUND)
 # ---------------------------------------notex------------------------------------------
 add_executable(notex notex.cpp ${SOURCES})
 # Install
