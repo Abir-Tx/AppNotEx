@@ -100,3 +100,50 @@ void Database::printData(COCHAR dbname, COCHAR tbname) {
 
   sqlite3_close(datadb);
 }
+
+// notex methods
+void Database::createNotexTable(COCHAR dbname, COCHAR tbname) {
+  CONNECT(dbname);
+
+  std::string tableName = tbname;
+  std::string tbCreateQuery =
+      "CREATE TABLE " + tableName + "(notes varchar(100));";
+
+  sqlite3_exec(datadb, tbCreateQuery.c_str(), NULL, NULL, NULL);
+
+  sqlite3_close(datadb);
+}
+bool Database::insertNotexData(COCHAR dbname, COCHAR tbname, COCHAR note) {
+  CONNECT(dbname);
+
+  std::string tableName = tbname;
+  std::string noteData = note;
+  std::string insertQuery =
+      "INSERT INTO " + tableName + "(notes) VALUES(" + "'" + note + "'" + ");";
+  logger->info("Generated query to be executed: " + insertQuery);
+  int queryStatus = sqlite3_exec(datadb, insertQuery.c_str(), NULL, NULL, NULL);
+  if (queryStatus == SQLITE_OK) {
+    logger->info("Data insertion in table -> " + tableName + " successfull");
+    return true;
+  } else {
+    logger->critical("Data insertion failed unexpectedly");
+    return false;
+  }
+}
+
+void Database::printNotexData(COCHAR dbname, COCHAR tbname) {
+  CONNECT(dbname);
+
+  std::string tablename = tbname;
+  std::string selectQuery =
+      "SELECT notes As 'Quick Notes' FROM " + tablename + ";";
+
+  int status = sqlite3_exec(datadb, selectQuery.c_str(), callback, NULL, NULL);
+
+  if (status == SQLITE_OK)
+    logger->info("Print data successfull");
+  else
+    logger->error("Could not read database & fetch data");
+
+  sqlite3_close(datadb);
+}
