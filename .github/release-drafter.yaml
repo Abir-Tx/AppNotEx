@@ -1,3 +1,10 @@
 template: |
-  ## What’s Changed
+  ## Changelog
   $CHANGES
+  ## Contributors
+  
+  $CONTRIBUTORS
+  
+  ## Pervious Version
+  
+  $PREVIOUS_TAG

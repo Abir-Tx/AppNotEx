@@ -12,11 +12,19 @@
 // -----------------------------------------DatabaseClass--------------------------------
 class Database {
  private:
+  static int callback(void *data, int argc, char **argv, char **azColName);
+
  public:
   void createDb(COCHAR dbname);
   void createTable(COCHAR dbname, COCHAR tbname);
   bool insertData(COCHAR dbname, COCHAR tbname, COCHAR appname,
                   COCHAR distroname, COCHAR link, COCHAR note);
+  void printData(COCHAR dbname, COCHAR tbname);
+
+  // notex methods
+  void createNotexTable(COCHAR dbname, COCHAR tbname);
+  bool insertNotexData(COCHAR dbname, COCHAR tbname, COCHAR note);
+  void printNotexData(COCHAR dbname, COCHAR tbname);
 };
 
 #endif  // DATABASE_HPP

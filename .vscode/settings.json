@@ -5,6 +5,12 @@
             "driver": "SQLite",
             "database": "${workspaceFolder:AppNotEx}/data/data.db",
             "name": "AppNotExData"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "AppNotExTestData",
+            "database": "${workspaceFolder:AppNotEx}/data/test/data.db"
         }
     ],
     "sqltools.useNodeRuntime": true,
