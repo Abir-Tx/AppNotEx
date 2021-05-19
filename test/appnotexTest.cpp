@@ -52,6 +52,22 @@ TEST(DatabaseTest, createDbTest) {
   EXPECT_TRUE(ok);
 }
 
+// Appnotex Execution Tests
+TEST(ExcutionTest, appnotex_print) {
+  int status = system("appnotex -p");
+  EXPECT_EQ(status, 0);
+}
+
+TEST(ExcutionTest, appnotex_version) {
+  int status = system("appnotex -v");
+  EXPECT_EQ(status, 0);
+}
+
+TEST(ExcutionTest, appnotex_help) {
+  int status = system("appnotex -h");
+  EXPECT_EQ(status, 0);
+}
+
 // Notex Tests
 TEST(notexTest, insertQuerytest) {
   // Creating database& Table
