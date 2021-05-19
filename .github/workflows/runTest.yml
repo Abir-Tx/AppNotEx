@@ -25,4 +25,4 @@ jobs:
         run: cd build && make -j8
 
       - name: appnotexTest
-        run: make runtest
+        run: cd bin && ./appnotexTest
