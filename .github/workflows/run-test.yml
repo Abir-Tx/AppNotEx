@@ -26,10 +26,7 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: Configure
-        run: |
-        git submodule init && git submodule update
-        make builddir
-        mkdir -p data/test
+        run: git submodule init && git submodule update && make builddir && mkdir -p data/test
         
       - name: appnotexTest
         run: make runtest
