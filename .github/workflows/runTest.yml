@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  RunTest:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +22,7 @@ jobs:
         run: git submodule init && git submodule update && cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
       - name: Build
-        run: cd build && make -j8
+        run: cd build && make -j8 && cd ..
 
       - name: appnotexTest
         run: cd bin && ./appnotexTest
