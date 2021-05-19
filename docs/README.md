@@ -1,4 +1,7 @@
+[![CMake-Linux](https://github.com/Abir-Tx/AppNotEx/actions/workflows/cmake-ci-linux.yml/badge.svg)](https://github.com/Abir-Tx/AppNotEx/actions/workflows/cmake-ci-linux.yml)
+
 # AppNotEx
+
 Linux personal apps/packages quick terminal based note keeper which can be exported later.
 
 ## Install
