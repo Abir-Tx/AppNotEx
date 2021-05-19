@@ -6,6 +6,7 @@
 class Export {
  public:
   void changeDbMode(COCHAR dbname);
+  int pipeSave(const char *filename);
 };
 
 #endif  // EXPORT_HPP

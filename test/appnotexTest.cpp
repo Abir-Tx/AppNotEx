@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "database.hpp"
+#include "export/export.hpp"
 
 TEST(DatabaseTest, insertQueryTest) {
   // Creating database& Table
@@ -66,6 +67,11 @@ TEST(ExcutionTest, appnotex_version) {
 TEST(ExcutionTest, appnotex_help) {
   int status = system("appnotex -h");
   EXPECT_EQ(status, 0);
+}
+
+TEST(ExportTest, appnotex_export) {
+  Export *exptest = new Export();
+  EXPECT_EQ(exptest->pipeSave("testExport"), 0);
 }
 
 // Notex Tests
