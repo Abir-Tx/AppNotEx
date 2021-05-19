@@ -23,3 +23,13 @@ jobs:
 
       - name: Build
         run: cd build && make -j8
+        
+  RunTest:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: appnotexTest
+        run: make runtest
+
