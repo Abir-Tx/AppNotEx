@@ -33,6 +33,7 @@ Running **appnotex** without any extra option will run the save info phase by de
 -h --help               Prints the help menu
 -p --print              Prints all the saved apps info  in a nice format
 -e --export             Exports the saved apps info to a text file in current directory
+-v --version            Prints the apps current version and developement informations
 
 ```
 
