@@ -6,6 +6,7 @@
 
 #include "alib.hpp"
 #include "database.hpp"
+#include "version.hpp"
 
 int main(int argc, char const *argv[]) {
   // Displaying the title of the AppNotEx using Alib decorators
@@ -24,9 +25,9 @@ int main(int argc, char const *argv[]) {
 
   if (argc >= 2) {
     // If cmd line arguments are passed then do stuffs here
-    const char *availableCmdArgs[] = {"-e",      "--export",  "-p",
-                                      "--print", "-h",        "--help",
-                                      "-g",      "--general", "--printall"};
+    const char *availableCmdArgs[] = {
+        "-e", "--export",  "-p",         "--print", "-h",       "--help",
+        "-g", "--general", "--printall", "-v",      "--version"};
 
     if (std::strcmp(argv[1], availableCmdArgs[0]) == 0 ||
         strcmp(argv[1], availableCmdArgs[1]) == 0) { /* --export || -e */
@@ -49,6 +50,16 @@ int main(int argc, char const *argv[]) {
       alib::decorateMe("Notex", 1, "", true);
       db->printNotexData(dbfilename, "general");
       alib::horizontalLine(1, "blue");
+    } else if (std::strcmp(argv[1], availableCmdArgs[9]) == 0 ||
+               std::strcmp(argv[1], availableCmdArgs[10]) ==
+                   0) { /* --version || -v */
+      alib ::horizontalLine();
+      std::cout << std::endl;
+      std::cout << "Current appnotex version: " << appnotex::info::appnotexVer
+                << std::endl;
+      std::cout << "Developed By: " << developer << std::endl;
+      std::cout << "License: " << license << std::endl;
+      alib::horizontalLine();
     }
 
     else { /* Handle invalid or unsupported arguements and the help argument
