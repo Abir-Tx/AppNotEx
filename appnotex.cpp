@@ -24,8 +24,9 @@ int main(int argc, char const *argv[]) {
 
   if (argc >= 2) {
     // If cmd line arguments are passed then do stuffs here
-    const char *availableCmdArgs[] = {"-e", "--export", "-p", "--print",
-                                      "-h", "--help",   "-g", "--general"};
+    const char *availableCmdArgs[] = {"-e",      "--export",  "-p",
+                                      "--print", "-h",        "--help",
+                                      "-g",      "--general", "--printall"};
 
     if (std::strcmp(argv[1], availableCmdArgs[0]) == 0 ||
         strcmp(argv[1], availableCmdArgs[1]) == 0) { /* --export || -e */
@@ -37,13 +38,17 @@ int main(int argc, char const *argv[]) {
                    0) { /* --print || -p */
 
       db->printData(dbfilename, tbname);
-      alib::decorateMe("Notex", 1, "", true);
-      db->printNotexData(dbfilename, "general");
 
     } else if (std::strcmp(argv[1], availableCmdArgs[6]) == 0 ||
                std::strcmp(argv[1], availableCmdArgs[7]) ==
                    0) { /* -g || --general note taking || notex */
       system("./notex");
+    } else if (std::strcmp(argv[1], availableCmdArgs[8]) ==
+               0) { /* --printall */
+      db->printData(dbfilename, tbname);
+      alib::decorateMe("Notex", 1, "", true);
+      db->printNotexData(dbfilename, "general");
+      alib::horizontalLine(1, "blue");
     }
 
     else { /* Handle invalid or unsupported arguements and the help argument
