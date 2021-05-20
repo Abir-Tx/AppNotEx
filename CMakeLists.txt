@@ -5,7 +5,7 @@
 cmake_minimum_required(VERSION 3.15)
 
 # Project Details
-project(AppNotEx VERSION 0.1.0)
+project(AppNotEx VERSION 1.0.0)
 
 # Show Banners/Messages
 message("AppNotEx Build System By Abir-Tx")
