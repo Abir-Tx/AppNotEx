@@ -19,6 +19,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Configure Dependencies
+        run: git submodule init && git submodule update
+
       - name: Configure JSONCPP
         run: |
             cd lib/jsoncpp
@@ -28,7 +31,7 @@ jobs:
             cd ../../..
 
       - name: Configure CMake
-        run: git submodule init && git submodule update && cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
       - name: Build
         run: cd build && make -j8
