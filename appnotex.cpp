@@ -1,12 +1,14 @@
 #include <pwd.h>
 #include <sys/types.h>
 
+#include <fstream>
 #include <string>
 
 #include "alib.hpp"
 #include "database.hpp"
 #include "errorcodes.hpp"
 #include "export/export.hpp"
+#include "json/json.h"
 #include "version.hpp"
 
 int main(int argc, char const *argv[]) {
@@ -14,12 +16,21 @@ int main(int argc, char const *argv[]) {
   alib::clrscr();
   alib::decorateMe("AppNotEx", 1, "", true);
 
-  // Creating database & Table
+  // Getting the home directory
   struct passwd *pw = getpwuid(getuid());
 
   const char *homedir = pw->pw_dir;
   std::string home = homedir;
-  std::string dbfile = home + "/.local/share/data.db";
+
+  // loading the configuration file
+  std::string config_file = home + "/.config/appnotex/config.json";
+  std::ifstream config(config_file);
+  Json::Value root;
+  config >> root;
+
+  // Creating database & Table
+  std::string dbfile =
+      home + root.get("dbsavedir", "/.local/share/data.db").asString();
   const char *dbfilename = dbfile.c_str();
   const char *tbname = "Data";
   Database *db = new Database();
@@ -127,5 +138,6 @@ int main(int argc, char const *argv[]) {
 
   // Free up the memory by deleting the Databse object
   delete db;
+
   return 0;
 }

@@ -52,6 +52,7 @@ file(GLOB_RECURSE HEADERS "include/AppNotEx/*.hpp")
 set(ALIB_LIB "lib/ALib/include/alib")
 set(RANG_LIB "lib/ALib/lib/rang")
 set(SPDLOG_LIB "lib/spdlog/include")
+set(JSONCPP_LIB "lib/jsoncpp/include/json")
                           # My Own AppNotexLib
 add_library(appnotexd STATIC
   ${HEADERS}
@@ -61,15 +62,17 @@ add_library(appnotexd STATIC
 # Production build
 # -------------------------------------appnotex----------------------------------------
 
+# Add the jsoncpp lib project
+# add_subdirectory(lib/jsoncpp)
+# 
 # Search for sqlite3 library using the built in SQLite3 package in cmake
 find_package (SQLite3)
 if (SQLITE3_FOUND)
-  include_directories(include/AppNotEx/database include/AppNotEx/notex include/AppNotEx ${ALIB_LIB} ${RANG_LIB} ${SPDLOG_LIB})
+  include_directories(include/AppNotEx/database include/AppNotEx/notex include/AppNotEx ${ALIB_LIB} ${RANG_LIB} ${SPDLOG_LIB} ${JSONCPP_LIB})
   add_executable(appnotex appnotex.cpp ${SOURCES})
   include_directories(${SQLITE3_INCLUDE_DIRS})
-  target_link_libraries (appnotex ${SQLITE3_LIBRARIES} sqlite3)
+  target_link_libraries (appnotex ${SQLITE3_LIBRARIES} sqlite3 jsoncpp)
 endif (SQLITE3_FOUND)
-
 
 # ---------------------------------------notex------------------------------------------
 add_executable(notex notex.cpp ${SOURCES})
