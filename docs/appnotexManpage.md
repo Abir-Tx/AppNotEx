@@ -19,10 +19,20 @@ appnotex - Linux personal apps/packages quick terminal based note keeper which c
 : Prints the help menu
 
 **-p**, **--print**
-: Prints all the saved apps info in a nice format in runtime on the terminal. This only prints or shows the saved info, it does not export info.
+: Prints all the saved apps info in a nice format in runtime on the terminal from the **appnotex** app. This only prints or shows the saved info, it does not export info.
 
 **-e**, **--export**
-: Exports the saved apps info to a text file in current directory
+: Exports the saved apps info to a text file in current directory.
+
+**-g**, **--general**
+: Takes quick general notes other than apps notes. This invokes the **notex** app which comes with **appnotex** from **version 1.0.0**. This enables the user to take quick small notes.
+
+**--printall**
+: Prints all the saved data from both **appnotex** and **notex** app.
+
+**-v**, **--version**
+: Prints the apps current version and developement informations
+
 
 # EXAMPLES
 
