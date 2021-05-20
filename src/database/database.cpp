@@ -1,14 +1,5 @@
 #include "database.hpp"
 
-#include <pwd.h>
-#include <sqlite3.h>
-#include <sys/types.h>
-
-#include <iostream>
-
-#include "rang.hpp"
-#include "spdlog/sinks/basic_file_sink.h"
-
 // Creating the logging object
 
 struct passwd *pw = getpwuid(getuid());

@@ -1,11 +1,12 @@
 #include <pwd.h>
 #include <sys/types.h>
 
-#include <iostream>
 #include <string>
 
 #include "alib.hpp"
 #include "database.hpp"
+#include "errorcodes.hpp"
+#include "export/export.hpp"
 #include "version.hpp"
 
 int main(int argc, char const *argv[]) {
@@ -32,7 +33,20 @@ int main(int argc, char const *argv[]) {
     if (std::strcmp(argv[1], availableCmdArgs[0]) == 0 ||
         strcmp(argv[1], availableCmdArgs[1]) == 0) { /* --export || -e */
 
-      std::cout << "\n[This feature will be soon available]";
+      Export *appnotexExport = new Export();
+
+      int status = appnotexExport->pipeSave("appnotex-exported-data.txt");
+
+      if (status == CMDEXECFAILED) {
+        std::cerr << rang::fg::red << rang::style::bold
+                  << "Error: Could not export and create data file"
+                  << rang::fg::reset << rang::style::reset << std::endl;
+      } else {
+        std::cout << "The exported data have been saved as "
+                  << rang::style::bold << "appnotex-exported-data.txt "
+                  << rang::style::reset << "in the current directory"
+                  << std::endl;
+      }
 
     } else if (std::strcmp(argv[1], availableCmdArgs[2]) == 0 ||
                std::strcmp(argv[1], availableCmdArgs[3]) ==

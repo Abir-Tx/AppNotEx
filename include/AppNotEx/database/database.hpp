@@ -1,6 +1,16 @@
 #if !defined(DATABASE_HPP)
 #define DATABASE_HPP
 
+// Includes
+#include <pwd.h>
+#include <sqlite3.h>
+#include <sys/types.h>
+
+#include <iostream>
+
+#include "rang.hpp"
+#include "spdlog/sinks/basic_file_sink.h"
+
 // --------------------------------------Macros------------------------------------------
 // Macro for const char*
 #define COCHAR const char *

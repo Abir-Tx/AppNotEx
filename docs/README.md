@@ -31,8 +31,10 @@ Running **appnotex** without any extra option will run the save info phase by de
 
 ```
 -h --help               Prints the help menu
--p --print              Prints all the saved apps info  in a nice format
+-p --print              Prints all the saved apps info of appnotex in a nice format
 -e --export             Exports the saved apps info to a text file in current directory
+-g --general            Invokes the notex app. Take quick small general notes other than just apps notes
+--printall              Prints all the saved data from both appnotex and notex in a nice format
 -v --version            Prints the apps current version and developement informations
 
 ```
