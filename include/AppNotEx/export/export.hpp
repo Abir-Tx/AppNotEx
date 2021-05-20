@@ -6,6 +6,8 @@
 class Export {
  public:
   void changeDbMode(COCHAR dbname);
+
+  /* Save the export from appnotex using linux pipe */
   int pipeSave(const char *filename);
 };
 

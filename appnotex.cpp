@@ -41,6 +41,11 @@ int main(int argc, char const *argv[]) {
         std::cerr << rang::fg::red << rang::style::bold
                   << "Error: Could not export and create data file"
                   << rang::fg::reset << rang::style::reset << std::endl;
+      } else {
+        std::cout << "The exported data have been saved as "
+                  << rang::style::bold << "appnotex-exported-data.txt "
+                  << rang::style::reset << "in the current directory"
+                  << std::endl;
       }
 
     } else if (std::strcmp(argv[1], availableCmdArgs[2]) == 0 ||
