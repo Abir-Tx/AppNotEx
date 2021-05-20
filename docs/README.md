@@ -1,4 +1,4 @@
-[![CMake-Linux](https://github.com/Abir-Tx/AppNotEx/actions/workflows/cmake-ci-linux.yml/badge.svg)](https://github.com/Abir-Tx/AppNotEx/actions/workflows/cmake-ci-linux.yml)
+[![CMake-Linux](https://github.com/Abir-Tx/AppNotEx/actions/workflows/cmake-ci-linux.yml/badge.svg)](https://github.com/Abir-Tx/AppNotEx/actions/workflows/cmake-ci-linux.yml) [![Run Tests](https://github.com/Abir-Tx/AppNotEx/actions/workflows/runTest.yml/badge.svg)](https://github.com/Abir-Tx/AppNotEx/actions/workflows/runTest.yml)
 
 # AppNotEx
 
@@ -35,6 +35,7 @@ Running **appnotex** without any extra option will run the save info phase by de
 -e --export             Exports the saved apps info to a text file in current directory
 -g --general            Invokes the notex app. Take quick small general notes other than just apps notes
 --printall              Prints all the saved data from both appnotex and notex in a nice format
+-v --version            Prints the apps current version and developement informations
 
 ```
 
