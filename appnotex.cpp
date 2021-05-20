@@ -12,10 +12,6 @@
 #include "version.hpp"
 
 int main(int argc, char const *argv[]) {
-  // Displaying the title of the AppNotEx using Alib decorators
-  alib::clrscr();
-  alib::decorateMe("AppNotEx", 1, "", true);
-
   // Getting the home directory
   struct passwd *pw = getpwuid(getuid());
 
@@ -27,6 +23,15 @@ int main(int argc, char const *argv[]) {
   std::ifstream config(config_file);
   Json::Value root;
   config >> root;
+
+  // ------------------------------------------------AppNotEx------------------------------------
+
+  // Displaying the title of the AppNotEx using Alib decorators depending on the
+  // user config. The default is to clear the screen first
+  bool doClear = root.get("startupScreenClear", true).asBool();
+  if (doClear) alib::clrscr();
+
+  alib::decorateMe("AppNotEx", 1, "", true);
 
   // Creating database & Table
   std::string dbfile =
