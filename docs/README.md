@@ -1,4 +1,4 @@
-[![CMake-Linux](https://github.com/Abir-Tx/AppNotEx/actions/workflows/cmake-ci-linux.yml/badge.svg)](https://github.com/Abir-Tx/AppNotEx/actions/workflows/cmake-ci-linux.yml) [![Run Tests](https://github.com/Abir-Tx/AppNotEx/actions/workflows/runTest.yml/badge.svg)](https://github.com/Abir-Tx/AppNotEx/actions/workflows/runTest.yml) ![Github total Downloads](https://img.shields.io/github/downloads/Abir-Tx/AppNotEx/total)
+[![CMake-Linux](https://github.com/Abir-Tx/AppNotEx/actions/workflows/cmake-ci-linux.yml/badge.svg)](https://github.com/Abir-Tx/AppNotEx/actions/workflows/cmake-ci-linux.yml) [![Run Tests](https://github.com/Abir-Tx/AppNotEx/actions/workflows/runTest.yml/badge.svg)](https://github.com/Abir-Tx/AppNotEx/actions/workflows/runTest.yml) ![Github total Downloads](https://img.shields.io/github/downloads/Abir-Tx/AppNotEx/total) ![AUR version](https://img.shields.io/aur/version/appnotex)
 
 # AppNotEx
 
