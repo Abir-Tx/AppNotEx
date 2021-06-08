@@ -1,4 +1,5 @@
 {
     "dbsavedir": "/.local/share/data.db",
-    "startupScreenClear": true
+    "startupScreenClear": true,
+    "prettyVersion": true
 }

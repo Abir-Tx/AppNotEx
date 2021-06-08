@@ -83,13 +83,15 @@ int main(int argc, char const *argv[]) {
     } else if (std::strcmp(argv[1], availableCmdArgs[9]) == 0 ||
                std::strcmp(argv[1], availableCmdArgs[10]) ==
                    0) { /* --version || -v */
-      alib ::horizontalLine();
+
+      bool isPrettyVersionEnabled = root.get("prettyVersion", true).asBool();
+      if (isPrettyVersionEnabled) alib ::horizontalLine();
       std::cout << std::endl;
       std::cout << "Current appnotex version: " << appnotex::info::appnotexVer
                 << std::endl;
       std::cout << "Developed By: " << developer << std::endl;
       std::cout << "License: " << license << std::endl;
-      alib::horizontalLine();
+      if (isPrettyVersionEnabled) alib::horizontalLine();
     }
 
     else { /* Handle invalid or unsupported arguements and the help argument
