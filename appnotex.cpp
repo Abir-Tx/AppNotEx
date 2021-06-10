@@ -1,25 +1,41 @@
 #include <pwd.h>
 #include <sys/types.h>
 
+#include <fstream>
 #include <string>
 
 #include "alib.hpp"
 #include "database.hpp"
 #include "errorcodes.hpp"
 #include "export/export.hpp"
+#include "json/json.h"
 #include "version.hpp"
 
 int main(int argc, char const *argv[]) {
-  // Displaying the title of the AppNotEx using Alib decorators
-  alib::clrscr();
-  alib::decorateMe("AppNotEx", 1, "", true);
-
-  // Creating database & Table
+  // Getting the home directory
   struct passwd *pw = getpwuid(getuid());
 
   const char *homedir = pw->pw_dir;
   std::string home = homedir;
-  std::string dbfile = home + "/.local/share/data.db";
+
+  // loading the configuration file
+  std::string config_file = home + "/.config/appnotex/config.json";
+  std::ifstream config(config_file);
+  Json::Value root;
+  config >> root;
+
+  // ------------------------------------------------AppNotEx------------------------------------
+
+  // Displaying the title of the AppNotEx using Alib decorators depending on the
+  // user config. The default is to clear the screen first
+  bool doClear = root.get("startupScreenClear", true).asBool();
+  if (doClear) alib::clrscr();
+
+  alib::decorateMe("AppNotEx", 1, "", true);
+
+  // Creating database & Table
+  std::string dbfile =
+      home + root.get("dbsavedir", "/.local/share/data.db").asString();
   const char *dbfilename = dbfile.c_str();
   const char *tbname = "Data";
   Database *db = new Database();
@@ -67,13 +83,15 @@ int main(int argc, char const *argv[]) {
     } else if (std::strcmp(argv[1], availableCmdArgs[9]) == 0 ||
                std::strcmp(argv[1], availableCmdArgs[10]) ==
                    0) { /* --version || -v */
-      alib ::horizontalLine();
+
+      bool isPrettyVersionEnabled = root.get("prettyVersion", true).asBool();
+      if (isPrettyVersionEnabled) alib ::horizontalLine();
       std::cout << std::endl;
       std::cout << "Current appnotex version: " << appnotex::info::appnotexVer
                 << std::endl;
       std::cout << "Developed By: " << developer << std::endl;
       std::cout << "License: " << license << std::endl;
-      alib::horizontalLine();
+      if (isPrettyVersionEnabled) alib::horizontalLine();
     }
 
     else { /* Handle invalid or unsupported arguements and the help argument
@@ -127,5 +145,6 @@ int main(int argc, char const *argv[]) {
 
   // Free up the memory by deleting the Databse object
   delete db;
+
   return 0;
 }
