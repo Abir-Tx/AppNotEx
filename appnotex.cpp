@@ -1,6 +1,7 @@
 #include <pwd.h>
 #include <sys/types.h>
 
+#include <filesystem>
 #include <fstream>
 #include <string>
 
@@ -18,16 +19,35 @@ int main(int argc, char const *argv[]) {
   const char *homedir = pw->pw_dir;
   std::string home = homedir;
 
-  // loading the configuration file
+  // Checking if the config dir & file exists or not
+  std::string config_dir = home + "/.config/appnotex";
+  if (!std::filesystem::exists(config_dir)) {
+    std::cerr << "Config directory not found. Creating the directory for first "
+                 "time....."
+              << std::endl;
+    mkdir(config_dir.c_str(), 0777);
+  }
+
   std::string config_file = home + "/.config/appnotex/config.json";
+  if (!std::filesystem::exists(config_file)) {
+    std::cerr << rang::fg::red << "Error: " << rang::fg::reset
+              << "Missing configuration file. Please create or copy the "
+                 "example config file from /usr/share/doc/appnotex/config.json "
+                 "to the $HOME/.config/appnotex folder & "
+                 "then try again"
+              << std::endl;
+    return CONFIGNOTFOUND;
+  }
+
+  // loading the configuration file
   std::ifstream config(config_file);
   Json::Value root;
   config >> root;
 
   // ------------------------------------------------AppNotEx------------------------------------
 
-  // Displaying the title of the AppNotEx using Alib decorators depending on the
-  // user config. The default is to clear the screen first
+  // Displaying the title of the AppNotEx using Alib decorators depending on
+  // the user config. The default is to clear the screen first
   bool doClear = root.get("startupScreenClear", true).asBool();
   if (doClear) alib::clrscr();
 
