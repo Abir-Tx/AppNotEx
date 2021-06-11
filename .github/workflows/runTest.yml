@@ -21,6 +21,15 @@ jobs:
       - name: Configure CMake
         run: git submodule init && git submodule update && cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
+      - name: Configure JSONCPP
+        run: |
+            cd lib/jsoncpp
+            mkdir build && cd build
+            cmake ..
+            make -j12
+            sudo make install
+            cd ../../..
+
       - name: Build
         run: cd build && make -j8 && sudo make install && cd ..
 
