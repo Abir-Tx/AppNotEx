@@ -34,6 +34,13 @@ appnotex - Linux personal apps/packages quick terminal based note keeper which c
 : Prints the apps current version and developement informations
 
 
+# CONFIGURATION
+
+**appnotex** can read json formatted configuration file. When run the app looks for a configuration file in the 
+**$HOME/.config/appnotex** folder and then reads the config file named **config.json**. Users can look over or copy and use the example config which is located inside the **/usr/share/doc** folder.
+
+
+
 # EXAMPLES
 
 **appnotex**
