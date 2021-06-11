@@ -22,7 +22,7 @@ execute_process(COMMAND ${LSB_RELEASE_EXEC} -is
 if(LSB_RELEASE_ID_SHORT STREQUAL "Ubuntu")
   message("You are on Ubuntu !")
   message("")
-  set(CMAKE_CXX_FLAGS "-Wall -v -g -Wextra -Wfatal-errors -lm -pthread")
+  set(CMAKE_CXX_FLAGS "-g -Wall -lm -pthread")
 else()
   set(CMAKE_CXX_FLAGS "-lm -lpthread")
 endif()
