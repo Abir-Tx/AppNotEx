@@ -19,10 +19,11 @@ execute_process(COMMAND ${LSB_RELEASE_EXEC} -is
 )
 
 # Compiler Flags
+set(CMAKE_CXX_STANDARD 17)
 if(LSB_RELEASE_ID_SHORT STREQUAL "Ubuntu")
   message("You are on Ubuntu !")
   message("")
-  set(CMAKE_CXX_FLAGS "-g -Wall -lm -pthread")
+  set(CMAKE_CXX_FLAGS "-g -Wall -lm -pthread -std=c++17 -lstdc++fs")
 else()
   set(CMAKE_CXX_FLAGS "-lm -lpthread")
 endif()
