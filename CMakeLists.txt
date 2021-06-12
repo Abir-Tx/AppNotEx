@@ -82,6 +82,9 @@ target_link_libraries(notex sqlite3)
 
 # Install
 install(TARGETS appnotex notex DESTINATION bin)
+#  Install the example config file
+install(FILES example/config.json
+DESTINATION /usr/share/doc/appnotex)
 
 # Testing build
 enable_testing()
