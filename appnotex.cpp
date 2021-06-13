@@ -93,7 +93,7 @@ int main(int argc, char const *argv[]) {
     } else if (std::strcmp(argv[1], availableCmdArgs[6]) == 0 ||
                std::strcmp(argv[1], availableCmdArgs[7]) ==
                    0) { /* -g || --general note taking || notex */
-      system("./notex");
+      system("notex");
     } else if (std::strcmp(argv[1], availableCmdArgs[8]) ==
                0) { /* --printall */
       db->printData(dbfilename, tbname);
