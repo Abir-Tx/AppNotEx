@@ -42,7 +42,7 @@ package() {
 	install -Dm644 -v docs/appnotex.1 "${pkgdir}/usr/local/man/man1/appnotex.1"
 	sudo gzip "${pkgdir}/usr/local/man/man1/appnotex.1"
 	sudo mandb
-	install -Dm644 -v example/config.json "${pkgdir}/usr/share/doc/${pkgname}/config.json"
+	# install -Dm644 -v example/config.json "${pkgdir}/usr/share/doc/${pkgname}/config.json"
 
 	# Creating the config directory & copying the example config
 	mkdir $HOME/.config/appnotex
