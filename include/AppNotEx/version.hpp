@@ -4,7 +4,7 @@
 
 namespace appnotex {
 namespace info {
-const char *appnotexVer = "1.1.0";
+const char *appnotexVer = "1.1.1";
 }  // namespace info
 }  // namespace appnotex
 
