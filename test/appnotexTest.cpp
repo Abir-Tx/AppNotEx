@@ -55,17 +55,17 @@ TEST(DatabaseTest, createDbTest) {
 
 // Appnotex Execution Tests
 TEST(ExcutionTest, appnotex_print) {
-  int status = system("../bin/appnotex -p");
+  int status = system("./appnotex -p");
   EXPECT_EQ(status, 0);
 }
 
 TEST(ExcutionTest, appnotex_version) {
-  int status = system("../bin/appnotex -v");
+  int status = system("./appnotex -v");
   EXPECT_EQ(status, 0);
 }
 
 TEST(ExcutionTest, appnotex_help) {
-  int status = system("../bin/appnotex -h");
+  int status = system("./appnotex -h");
   EXPECT_EQ(status, 0);
 }
 
